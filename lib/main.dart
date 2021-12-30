@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mybigexam/providers/my_page_view_provider.dart';
+import 'package:mybigexam/screens/auth/signIn_page.dart';
 import 'package:mybigexam/screens/home/home_page.dart';
 import 'package:mybigexam/screens/splahs_screen/spalsh_screnn_1.dart';
 import 'package:mybigexam/screens/splahs_screen/splash_screen.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        "/": (context) => SplashScreen1(),
+        "/" : (context) => SignInPage(),
+        "/splash": (context) => SplashScreen1(),
         "/home": (context) => HomePage(),
       },
       initialRoute: "/",
