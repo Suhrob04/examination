@@ -24,7 +24,8 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: getHeight(25.5),
             ),
-            HomeWidgets().cookbookPageview(context)
+            HomeWidgets().cookbookPageview(context),
+            
           ],
         ),
       ),

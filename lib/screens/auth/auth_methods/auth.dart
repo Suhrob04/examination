@@ -1,8 +1,8 @@
 import 'package:mybigexam/constants/export_pages.dart';
 
 class AuthForSignIn extends StatelessWidget {
-  const AuthForSignIn({Key? key}) : super(key: key);
-
+  AuthForSignIn({Key? key}) : super(key: key);
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return StatefulBuilder(
@@ -59,8 +59,6 @@ class AuthForSignIn extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 8.0),
       child: IntlPhoneField(
-        autoValidate: true,
-        initialCountryCode: "+998",
         decoration: InputDecoration(
           labelText: 'Phone Number',
           border: OutlineInputBorder(
@@ -68,14 +66,8 @@ class AuthForSignIn extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
           ),
         ),
-        onChanged: (phone) {
-          // * delete
-          print(phone.completeNumber);
-        },
-        onCountryChanged: (phone) {
-          // * delete
-          print('Country code changed to: ');
-        },
+        onChanged: (phone) {},
+        onCountryChanged: (phone) {},
       ),
     );
   }

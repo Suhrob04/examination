@@ -1,4 +1,5 @@
 import 'package:mybigexam/constants/export_pages.dart';
+import 'package:mybigexam/constants/icons.dart';
 
 class SplashScreen1 extends StatelessWidget {
   SplashScreen1({Key? key}) : super(key: key);
@@ -17,7 +18,9 @@ class SplashScreen1 extends StatelessWidget {
       "title": "Cook from your favorite device",
       "subtitle":
           "Mallika stores your recipes in the Cloud so you can access them on any device through our website or Android/iOS app."
-    }
+    },
+   
+    
   ];
 
   @override
@@ -28,10 +31,11 @@ class SplashScreen1 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          context.watch<CurrentPageforSplash>().currentPage == 0
+          context.watch<CurrentPageforSplash>().currentPageforSplash == 0  
               ? Expanded(
                   child: Stack(
                     children: [
+                        
                       Positioned(
                         top: getHeight(35),
                         right: getWidth(25),
@@ -40,23 +44,30 @@ class SplashScreen1 extends StatelessWidget {
                           width: getWidth(56),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.black,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(getWidth(16))
-                              )
-                            ),
+                                primary: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(getWidth(16)))),
                             onPressed: () {
-                              Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, "/", (route) => false);
                             },
-                            child: Text("Skip",style: TextStyle(fontSize: getHeight(12)),),
+                            child: Text(
+                              "Skip",
+                              style: TextStyle(fontSize: getHeight(12)),
+                            ),
                           ),
                         ),
-                      ),
+                      ) 
                     ],
                   ),
                 )
-              : const Center(),
-         
+              : context.watch<CurrentPageforSplash>().currentPageforSplash == 1 ?  Center() : Positioned(
+                bottom: getHeight(50),
+                right: getWidth(20),
+                child: IconButton(onPressed: (){
+                  Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
+                }, icon: Icon(Icons.arrow_forward_outlined))),
           SizedBox(
             height: getHeight(465),
             width: getWidth(375),
@@ -65,6 +76,7 @@ class SplashScreen1 extends StatelessWidget {
               pageSnapping: true,
               onPageChanged: (v) {
                 context.read<CurrentPageforSplash>().setCurrentPage(v);
+               
               },
               itemCount: pageList.length,
               itemBuilder: (context, index) {
@@ -80,7 +92,7 @@ class SplashScreen1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(pageList.length, (i) {
               return Icon(
-                context.watch<CurrentPageforSplash>().currentPage == i
+                context.watch<CurrentPageforSplash>().currentPageforSplash == i
                     ? Icons.circle_sharp
                     : Icons.circle_outlined,
                 color: kOrange,
@@ -117,11 +129,7 @@ class SplashScreen1 extends StatelessWidget {
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey.shade400),
                 borderRadius: BorderRadius.circular(34)),
-            child: SvgPicture.asset(
-              "assets/icons/Union.svg",
-              height: getHeight(30),
-              width: getWidth(30),
-            ),
+            child: union
           ),
           SizedBox(
             height: getHeight(50.0),
