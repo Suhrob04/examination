@@ -19,8 +19,6 @@ class SplashScreen1 extends StatelessWidget {
       "subtitle":
           "Mallika stores your recipes in the Cloud so you can access them on any device through our website or Android/iOS app."
     },
-   
-    
   ];
 
   @override
@@ -31,11 +29,10 @@ class SplashScreen1 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          context.watch<CurrentPageforSplash>().currentPageforSplash == 0  
+          context.watch<CurrentPageforSplash>().currentPageforSplash == 0
               ? Expanded(
                   child: Stack(
                     children: [
-                        
                       Positioned(
                         top: getHeight(35),
                         right: getWidth(25),
@@ -58,16 +55,11 @@ class SplashScreen1 extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ) 
+                      )
                     ],
                   ),
                 )
-              : context.watch<CurrentPageforSplash>().currentPageforSplash == 1 ?  Center() : Positioned(
-                bottom: getHeight(50),
-                right: getWidth(20),
-                child: IconButton(onPressed: (){
-                  Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
-                }, icon: Icon(Icons.arrow_forward_outlined))),
+              : Center(),
           SizedBox(
             height: getHeight(465),
             width: getWidth(375),
@@ -76,7 +68,6 @@ class SplashScreen1 extends StatelessWidget {
               pageSnapping: true,
               onPageChanged: (v) {
                 context.read<CurrentPageforSplash>().setCurrentPage(v);
-               
               },
               itemCount: pageList.length,
               itemBuilder: (context, index) {
@@ -100,8 +91,22 @@ class SplashScreen1 extends StatelessWidget {
               );
             }).toList(),
           ),
-          SizedBox(
+          Container(
             height: getHeight(50),
+            width: getWidth(375),
+           alignment: Alignment(1,-1),
+            child:
+                context.watch<CurrentPageforSplash>().currentPageforSplash == 2
+                    ? IconButton(
+                        splashColor: kOrange,
+                        color: kOrange,
+                        hoverColor: kOrange,
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
+                        },
+                        icon: Icon(Icons.arrow_forward_outlined),
+                      )
+                    : Center(),
           ),
         ],
       ),
@@ -123,14 +128,13 @@ class SplashScreen1 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            height: getHeight(68),
-            width: getWidth(68),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade400),
-                borderRadius: BorderRadius.circular(34)),
-            child: union
-          ),
+              height: getHeight(68),
+              width: getWidth(68),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade400),
+                  borderRadius: BorderRadius.circular(34)),
+              child: union),
           SizedBox(
             height: getHeight(50.0),
           ),
@@ -152,8 +156,10 @@ class SplashScreen1 extends StatelessWidget {
                       fontSize: 16, fontWeight: FontWeight.w400),
                 )),
           ),
-          SizedBox(
+          Container(
             height: getHeight(50),
+            width: getWidth(375),
+            alignment: Alignment(-1, 1),
           ),
         ],
       ),

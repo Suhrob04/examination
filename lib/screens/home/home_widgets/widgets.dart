@@ -62,7 +62,7 @@ class HomeWidgets extends StatelessWidget {
           ],
         ),
         SizedBox(
-          width: getWidth(53),
+          width: getWidth(38),
         ),
         SizedBox(
           height: getHeight(44),

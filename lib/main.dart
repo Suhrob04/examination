@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mybigexam/main_page.dart';
 import 'package:mybigexam/providers/bottomnav_provider.dart';
 import 'package:mybigexam/providers/my_page_view_provider.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+         textTheme: GoogleFonts.poppinsTextTheme(), 
       ),
       routes: {
         "/": (context) => MainPage(),
